@@ -1,0 +1,11 @@
+.production-url-identifier-main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    border: 5px solid red;
+    background-color: transparent;
+    pointer-events: none;
+    z-index: 999999999;
+    bottom: 0;
+    right: 0;
+}

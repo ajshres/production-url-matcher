@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+  "name": "Production url identifier",
+  "description": "Show production pages with a red border for developers to have precaution using production sites. at all times",
+  "version": "1.0.0",
+  "background": {
+    "scripts": [
+      "event.js"
+    ],
+    "persistent": true
+  },
+  "browser_action": {
+    "default_title": "Production url identifier",
+    "default_popup": "popup.html"
+  },
+  "web_accessible_resources": [
+    "popup.css"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "css": [],
+      "js": ["content.js"]
+    }
+  ]
+}
