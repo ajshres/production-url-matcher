@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Production url identifier",
   "description": "Show production pages with a red border for developers to have precaution using production sites. at all times",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "background": {
     "scripts": [
       "event.js"
