@@ -15,34 +15,38 @@ interface UrlReducer {
 }
 export default (oldState: UrlReducer, action: any) => {
     const state: UrlReducer = oldState || initialData;
+    console.log('action type', action.type);
     if(action.type === 'initializeState') {
-        return {...oldState};
+        console.log("Initialized...");
+        return {...oldState, ...action.payload};
     }
-    let newState;
+    let newState = state;
     switch (action.type) {
         case 'ADD_URL':
-            return {
+            newState = {
                 ...state,
                 urls: [
                     ...state.urls,
                     action.payload.url
                 ]
             }
+            break;
         case 'REMOVE_URL': {
             newState = {...state, urls: [...state.urls]};
             newState.urls.splice(action.payload.index, 1);
-            return newState;
+            break;
         }
         case 'UPDATE_URL': {
             newState = {...state, urls: [...state.urls]};
             newState.urls.splice(action.payload.index, 1, action.payload.url);
-            return newState;
+            break;
         }
         default:
             break;
     }
-    /* if(oldState != state) {
-        chrome.storage.local.set({'count':{...state}});
-    } */
-    return state;
+    if(oldState != newState && action.type.indexOf("@@redux") === -1) {
+        console.log("save state", {...newState});
+        chrome.storage.local.set({'productionURLs':{...newState}});
+    }
+    return {...newState};
 };
