@@ -9,6 +9,7 @@
     ],
     "persistent": true
   },
+  "permissions": ["storage"],
   "browser_action": {
     "default_title": "Production url identifier",
     "default_popup": "popup.html"

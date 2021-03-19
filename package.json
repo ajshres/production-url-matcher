@@ -5,7 +5,9 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/.bin/gulp"
+    "start": "./node_modules/.bin/gulp",
+    "build" : "./node_modules/.bin/gulp",
+    "watch" : "./node_modules/.bin/gulp watch"
   },
   "type": "module",
   "author": "Ajay Gopal Shrestha",
@@ -15,7 +17,8 @@
     "@types/react-redux": "^7.1.16",
     "react": "^17.0.1",
     "react-color": "^2.19.3",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "webext-redux": "^2.1.7"
   },
   "devDependencies": {
     "@teamsupercell/typings-for-css-modules-loader": "^2.4.0",
@@ -42,7 +45,6 @@
     "style-loader": "^2.0.0",
     "ts-loader": "^8.0.17",
     "typescript": "^4.2.3",
-    "webext-redux": "^2.1.7",
     "webpack": "^5.24.3"
   }
 }
