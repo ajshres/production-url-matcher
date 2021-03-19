@@ -9,24 +9,29 @@ const aliases = {
     // background
     'production-url-identifier': () => {
         // this call can only be made in the background script
-        console.log('called production-url-identifier');
+        console.log('************************************************************');
+        console.log('************** PRODUCTION URL IDENTIFIER *******************');
+        console.log('************************************************************');
+        console.log('********************* INITIALIZING... **********************');
+        console.log('************************************************************');
     }
   };
+// Creating store to connect background task with popup and content
 const store = createStore(rootReducer,
     applyMiddleware(
         alias(aliases)
     )
 );
 wrapStore(store, {
-    portName: 'production-url-identifier'
+    portName: 'production-url-identifier' // unique port-name to identify messaging channel
 });
 
 console.log("*** CHROME EXTENTION INITIALIZATION IN BACKGROUND ***");
 
-// chrome.storage.local.get(['productionURLs'], function(ob) {
-//     console.log("Event::index ==>  Chrome Sync",ob);
-//     store.dispatch({    
-//         'type':'initializeState',
-//         'count':ob.productionURLs || {urls: []}
-//     });
-// });
+chrome.storage.local.get(['productionURLs'], function(ob) {
+    console.log("Event::index ==>  Chrome Sync",ob);
+    store.dispatch({    
+        'type':'initializeState',
+        'payload':ob.productionURLs || {urls: []}
+    });
+});

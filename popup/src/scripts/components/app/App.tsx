@@ -52,13 +52,13 @@ class App extends Component<any, IState> {
     this.setState({
       error: false
     })
-    // validate url
+    // @Todo: validate url
     store.dispatch({
       type: 'ADD_URL',
       payload: {
         url: {
           url,
-          match: 'base',
+          match: this.state.match,
           settings: {
             borderColor: this.state.borderColor,
             borderWidth: this.state.borderWidth,
@@ -137,7 +137,9 @@ class App extends Component<any, IState> {
             </div>
             <div className="form-group">
               <label>Border Color:</label>
-              <CirclePicker width="22" onChange={this.onBorderColorChange} color={this.state.borderColor}/>
+              <div style={{display: "inline-flex", width: 250}}>
+                <CirclePicker width="22" onChange={this.onBorderColorChange} color={this.state.borderColor} />
+              </div>
             </div>
             <div className="form-group">
               <label>Border width</label>
